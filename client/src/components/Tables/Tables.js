@@ -30,10 +30,10 @@ const Tables = (props) => {
       }
       <h2>Tables</h2>
       <div className="ui secondary menu">
-        <div class="item">
-          <div class="ui header">All Tables</div>
+        <div className="item">
+          <div className="ui header">All Tables</div>
         </div>
-        <div class="item">
+        <div className="item">
           <button className="ui right labeled icon button">
             <a href="/tables/add">
               Add Table
