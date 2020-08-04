@@ -1,0 +1,24 @@
+App Structure
+-------------
+
+● src
++---● actions
+|   |
+|   |-- api.js (handle all http request)
+|   |-- table.js (Redux actions & action creators) 
+|   |-- store.js (configure redux store)
+|
++---● components
+|   |
+|   |--tableForm.js (form operations) - child
+|   |--tables.js  (list of records) - parent
+|   |--useForm.js (handles common form opearations)
+|
+|---● reducers
+|   |
+|   |--tables.js
+|   |--index.js
+|
+|-- App.js
+|-- index.js
+|-- index.css
