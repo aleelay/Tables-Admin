@@ -6,7 +6,7 @@
 cd server
 npm install
 nodemon run start
-Will run on Port 4000
+Will run on Port 9000
 ```
 ###### Collections:
 Zones: [
