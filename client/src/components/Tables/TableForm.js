@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import useForm from './useForm';
+import React, { useEffect } from "react";
+import useForm from '../useForm';
 import { connect } from "react-redux";
-import * as actions from "../actions/table";
+import * as actions from "../../actions/table";
 import ButterToast, { Cinnamon } from "butter-toast";
 
 const initialFieldValues = {
@@ -12,9 +12,9 @@ const initialFieldValues = {
 
 const TableForm = (props) => {
   useEffect(() => {
-    if (props.currentId != 0){
+    if (props.currentId !== 0){
         setValues({
-            ...props.tableList.find(x => x._id == props.currentId)
+            ...props.tableList.find(x => x._id === props.currentId)
         })
         setErrors({})
     }
@@ -25,7 +25,7 @@ const TableForm = (props) => {
     setErrors({
         ...temp
     })
-    return Object.values(temp).every(x => x == "")
+    return Object.values(temp).every(x => x === "")
   }
 
   var {
@@ -49,7 +49,7 @@ const TableForm = (props) => {
             resetForm()
         }
     if (validate()) {
-      if(props.currentId == 0)
+      if(props.currentId === 0)
         props.createTable(values, onSuccess)
       else
         props.updateTable(props.currentId, values, onSuccess)
@@ -57,37 +57,43 @@ const TableForm = (props) => {
   }
 
   return (
-    <div>
-      <h2>Form</h2>
-      <form autoComplete="off" noValidate  onSubmit={handleSubmit}>
-        <label>
-          Name: 
+    <div className="fields">
+      <h2>Add Table</h2>
+      <form className="ui form" autoComplete="off" noValidate  onSubmit={handleSubmit}>
+        <div className="seven wide field">
+          <label>
+            Name:
+          </label> 
           <input 
             type="text" 
             name="name" 
+            placeholder="Table Name"
             values={values.name} 
             onChange={handleInputChange}
           />
-        </label>
-        <label>
-          Zone: 
+        </div>
+        <div className="seven wide field">
+          <label>
+            Zone:
+          </label> 
           <input 
             type="text" 
             name="zone" 
+            placeholder="Zone Name"
             values={values.zone} 
-            onChange={handleInputChange} 
-          />
-        </label>
-        <label>
-          active: 
-          <input 
-            type="text" 
-            name="active" 
-            values={values.active} 
             onChange={handleInputChange}
           />
-        </label>
-        <input type="submit" value="Submit"/>
+        </div>
+        <div className="three wide field">
+          <label>
+            Is Active:
+          </label> 
+          <select>
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+          </select>
+        </div>
+        <input className="ui button" type="submit" value="Submit"/>
       </form>
       </div>
   );
